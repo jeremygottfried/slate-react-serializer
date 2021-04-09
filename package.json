@@ -50,5 +50,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "slate": "^0.62.0"
+  }
 }

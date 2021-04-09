@@ -54,8 +54,12 @@ By default, will serialize:
 - h6
 - li
 - ol
+- bold
+- code
+- italic
+- underline
 
-### Add custom serializer or override default
+### Add custom serializer
 ```jsx
 const Embeds = () => {
   const value = [{"type":"paragraph","children":[{"text":"In addition to simple image nodes, you can actually create complex embedded nodes. For example, this one contains an input element that lets you change the video being rendered!"}]},{"type":"video","url":"https://player.vimeo.com/video/26689853","children":[{"text":""}]},{"type":"paragraph","children":[{"text":"Try it out! This editor is built to handle Vimeo embeds, but you could handle any type."}]}]
@@ -65,6 +69,20 @@ const Embeds = () => {
         <iframe src={url} style={{ position: 'absolute', top: '0px', left: '0px', width: '100%', height: '100%' }} />
       </div>
     )
+  }
+  const serializer = getSerializer({ customTypes });
+
+  return serializer(value);
+}
+```
+
+### Override default serializer
+```
+const OverrideDefaults = () => {
+  const value = [{"type":"paragraph","children":[{"text":"This is editable "},{"text":"rich","bold":true},{"text":" text, "},{"text":"much","italic":true},{"text":" better than a "},{"text":"<textarea>","code":true},{"text":"!"}]},{"type":"paragraph","children":[{"text":"Since it's rich text, you can do things like turn a selection of text "},{"text":"bold","bold":true},{"text":", or add a semantically rendered link in the middle of the page, like this:"}]},{"type":"link","url":"https://en.wikipedia.org/wiki/Hypertext","children":[{"text":"Override link html"}]},{"type":"paragraph","children":[{"text":"Try it out for yourself!"}]}];
+  const customTypes = {
+    bold: ({ children }) => <span style={{ fontWeight: 700 }}>{children}</span>,
+    link: ({ children }) => <button>{children}</button>
   }
   const serializer = getSerializer({ customTypes });
 

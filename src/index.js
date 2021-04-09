@@ -81,16 +81,32 @@ export default function getSerializer({
         stylizedText = markDownSerializer(stylizedText)
       }
       if (bold && !disables.includes('bold')) {
-        stylizedText = <strong>{stylizedText}</strong>
+        stylizedText = types.bold ? (
+          types.bold({ children: stylizedText })
+        ) : (
+          <strong>{stylizedText}</strong>
+        )
       }
       if (code && !disables.includes('code')) {
-        stylizedText = <code>{stylizedText}</code>
+        stylizedText = types.code ? (
+          types.code({ children: stylizedText })
+        ) : (
+          <code>{stylizedText}</code>
+        )
       }
       if (italic && !disables.includes('italic')) {
-        stylizedText = <em>{stylizedText}</em>
+        stylizedText = types.italic ? (
+          types.italic({ children: stylizedText })
+        ) : (
+          <em>{stylizedText}</em>
+        )
       }
       if (underline && !disables.includes('underline')) {
-        stylizedText = <u>{stylizedText}</u>
+        stylizedText = types.underline ? (
+          types.underline({ children: stylizedText })
+        ) : (
+          <u>{stylizedText}</u>
+        )
       }
       return stylizedText
     }
