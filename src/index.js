@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text } from 'slate';
-import ReactDOMServer from 'react-dom/server';
+import React from 'react'
+import { Text } from 'slate'
+import ReactDOMServer from 'react-dom/server'
 
 export default function getSerializer({
   customTypes = {},
