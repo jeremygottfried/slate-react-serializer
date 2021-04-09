@@ -1,7 +1,9 @@
-import { ExampleComponent } from '.'
+import getSerializer from '.'
 
-describe('ExampleComponent', () => {
+const serializer = getSerializer()
+
+describe('Serializer', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(serializer).toBeTruthy()
   })
 })
