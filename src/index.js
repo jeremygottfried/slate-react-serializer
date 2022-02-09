@@ -13,7 +13,7 @@ export default function getSerializer({
   const defaultTypes = useDefaults
     ? {
         div: ({ children }) => <div>{children}</div>,
-        quote: ({ childen }) => (
+        quote: ({ children }) => (
           <blockquote>
             <p>{children}</p>
           </blockquote>
@@ -40,7 +40,7 @@ export default function getSerializer({
           </div>
         ),
         'numbered-list': ({ children }) => <ol>{children}</ol>,
-        q: ({ childen }) => (
+        q: ({ children }) => (
           <blockquote>
             <p>{children}</p>
           </blockquote>
